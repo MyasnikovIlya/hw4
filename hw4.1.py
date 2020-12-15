@@ -37,11 +37,15 @@ ga_instance.run()
 solution, solution_fitness, _ = ga_instance.best_solution()
 
 result = []
-val = 0
+vals= [0,0,0]
 for i in range(0, 30):
     if solution[i] > 0:
         result.append(data[i])
-        val += data[i][0]
+        vals[0] +=data[i][0]
+        vals[1] +=data[i][1]
+        vals[2] +=data[i][2]
+result.append(['Ниже', 'сумма', 'значений'])
+result.append(vals)
 result_df = pd.DataFrame.from_records(result, columns=['w','v','c'])
 
 print(solution_fitness)
